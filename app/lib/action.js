@@ -71,7 +71,7 @@ export async function deleteSelectAll(bool) {
     newItems.forEach((item) => cartItems.push(item));
     updateSelect();
   }
-  revalidatePath("/cart");
+  revalidatePath("/", "layout");
 }
 
 async function alreadyAdded(code) {
@@ -86,7 +86,7 @@ export async function deleteCartItem(code, color, size) {
   );
   cartItems.splice(productIndex, 1);
   updateSelect();
-  revalidatePath("/cart");
+  revalidatePath("/", "layout");
 }
 
 export async function removeCaption(code) {
@@ -121,9 +121,9 @@ export async function addToCart(product, buy) {
     }
   }
   if (buy) {
-    revalidatePath("/cart");
+    revalidatePath("/", "layout");
     redirect("/cart");
   } else {
-    revalidatePath("/product?query=" + code);
+    revalidatePath("/", "layout");
   }
 }
